@@ -1,0 +1,68 @@
+pTeX 2.1.5.beta10 を beta11 にするパッチ
+
+作者：
+  中野 賢 <ken-na@ascii.co.jp>, 株式会社 アスキー 出版技術部
+
+修正内容：
+  pTeX 2.1.5 β７で変更したボックスの前後の和欧文間スペースの挿入動作を、
+  それ以前の版の動作と同じにする。
+
+  なお、このパッチ後も、テキスト数式の前後への挿入に関してはβ８以降から
+  変わらない。
+
+修正方法：
+  このファイルを ptex215i ディレクトリに置き、コマンドラインから
+
+     patch -s < patch215itoj  (beta9 -> beta10)
+     patch -s < patch215jtok  (beta10 -> beta11)
+
+  を実行する。
+
+
+*** ptex.chg.2.1.5.orig	Fri Aug  1 19:54:43 1997
+--- ptex.chg.2.1.5	Thu Aug  7 19:27:22 1997
+***************
+*** 99,105 ****
+  @x [2] l.187 - pTeX:
+  @d banner=='This is TeX, Version 3.14159' {printed when \TeX\ starts}
+  @y
+! @d banner=='This is pTeX, Version p2.1.5.beta10, based on TeX, Version 3.14159'
+  #endif JPN
+  @z
+  
+--- 99,105 ----
+  @x [2] l.187 - pTeX:
+  @d banner=='This is TeX, Version 3.14159' {printed when \TeX\ starts}
+  @y
+! @d banner=='This is pTeX, Version p2.1.5.beta11, based on TeX, Version 3.14159'
+  #endif JPN
+  @z
+  
+***************
+*** 9820,9830 ****
+  begin find_first_char:=true; first_char:=null; last_char:=null;
+  if (shift_amount(p)=0) then
+    begin if check_box(list_ptr(p)) then
+!     begin
+!     if first_char<>null then @<Insert a space before the |first_char|@>;
+!     if last_char<>null then @<Insert a space after the |last_char|@>;
+!     end;
+!   end;
+  end
+  
+  @ @<Insert a space before the |first_char|@>=
+--- 9820,9831 ----
+  begin find_first_char:=true; first_char:=null; last_char:=null;
+  if (shift_amount(p)=0) then
+    begin if check_box(list_ptr(p)) then
+!     begin if first_char<>null then @<Insert a space before the |first_char|@>;
+!     if last_char<>null then
+!       begin @<Insert a space after the |last_char|@>;
+!       end else insert_skip:=no_skip;
+!     end else insert_skip:=no_skip;
+!   end else insert_skip:=no_skip;
+  end
+  
+  @ @<Insert a space before the |first_char|@>=
+--
+End of patch215jtok

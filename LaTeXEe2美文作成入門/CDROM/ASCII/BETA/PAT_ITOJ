@@ -1,0 +1,76 @@
+pTeX 2.1.5.beta9 を beta10 にするパッチ
+
+作者：
+  中野 賢 <ken-na@ascii.co.jp>, 株式会社 アスキー 出版技術部 
+
+修正内容：
+  「（注）」のような文字列が行末のとき、「（」の後ろに \jcharwidowpenalty
+   が入る。このとき「（」の後ろで行分割が起こる可能性があるのを修正する。
+
+修正方法：
+  このファイルを ptex215i ディレクトリに置き、コマンドラインから
+
+     patch -s < patch215itoj
+
+  を実行する。
+
+
+*** ptex.chg.2.1.5.orig	Tue Jul 29 18:24:43 1997
+--- ptex.chg.2.1.5	Fri Aug  1 19:00:08 1997
+***************
+*** 99,105 ****
+  @x [2] l.187 - pTeX:
+  @d banner=='This is TeX, Version 3.14159' {printed when \TeX\ starts}
+  @y
+! @d banner=='This is pTeX, Version p2.1.5.beta9, based on TeX, Version 3.14159'
+  #endif JPN
+  @z
+  
+--- 99,105 ----
+  @x [2] l.187 - pTeX:
+  @d banner=='This is TeX, Version 3.14159' {printed when \TeX\ starts}
+  @y
+! @d banner=='This is pTeX, Version p2.1.5.beta10, based on TeX, Version 3.14159'
+  #endif JPN
+  @z
+  
+***************
+*** 9945,9959 ****
+    end;
+  t:=q; s:=null;
+  @<Seek list and make |t| pointing widow penalty position@>;
+! if s<>null then
+!   begin s:=new_penalty(jchr_widow_penalty); subtype(s):=widow_pena;
+!   link(s):=link(t); link(t):=s; t:=link(s);
+!   while(not is_char_node(t)) do
+!     begin if (type(t)=glue_node)or(type(t)=kern_node) then goto exit;
+!     t:=link(t);
+!     end;
+!   z:=new_glue(u); subtype(z):=kanji_skip_code+1;
+!   link(z):=link(s); link(s):=z;
+    end;
+  end;
+  
+--- 9945,9964 ----
+    end;
+  t:=q; s:=null;
+  @<Seek list and make |t| pointing widow penalty position@>;
+! if (s<>null) then
+!   begin s:=link(t);
+!     if (not is_char_node(s))and(type(s)=penalty_node) then
+!       penalty(s):=penalty(s)+jchr_widow_penalty
+!     else if (jchr_widow_penalty<>0) then
+!       begin s:=new_penalty(jchr_widow_penalty); subtype(s):=widow_pena;
+!       link(s):=link(t); link(t):=s; t:=link(s);
+!       while(not is_char_node(t)) do
+!         begin if (type(t)=glue_node)or(type(t)=kern_node) then goto exit;
+!         t:=link(t);
+!         end;
+!       z:=new_glue(u); subtype(z):=kanji_skip_code+1;
+!       link(z):=link(s); link(s):=z;
+!       end;
+    end;
+  end;
+  
+--
+End of patch215itoj

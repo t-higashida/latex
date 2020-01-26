@@ -1,0 +1,65 @@
+                                   INDEX
+
+[01] dvipsk-w32.tar.gz
+dvi ---> ps driver dvipsk-5.66a + ascii-jpatch-p1.3 for Win 32 (x86).
+Japanese is OK and upper compatible with dvipsk-5.66a. vf-a2bk.tar.gz in
+this directory is also necessary to deal with Japanese. MakeTeXPK is supported.
+
+[02] makeindex-w32.tar.gz
+makeindex program by ASCII Co. for Windows NT and Windows 95.
+This supports kpathsea 3.0.
+
+[03] mendexk-w32.tar.gz
+makeindex program mendexk-2.4a by K. Asayama and ASCII Co. for
+Win 32 (x86). This supports kpathsea 3.0.
+
+[04] oldformat.tar.gz
+Format files for LaTeX 2.09, pLaTeX 2.09 and old pTeX.
+New ones for (p)LaTeX2e are in ptex-2.1.5-w32lib.tar.gz.
+
+[05] oldinputs.tar.gz
+Input files to be used with oldformat.tar.gz. This will also be useful
+as (p)TeX input files and as (p)LaTeX2e packages ( if compatible ).
+
+[06] ptex-2.1.5-w32bin.tar.gz
+Binaries of pTeX-2.1.5 for Win 32 (x86) compiled as console applications.
+
+[07] ptex-2.1.5-nec-w95bin.tar.gz
+Binaries of pTeX-2.1.5 for NEC Windows 95.
+
+[08] ptex-2.1.5-w32lib.tar.gz
+Libraries for pTeX-2.1.5 .
+
+[09] web2c-7.0-w32bin.tar.gz
+Binaries of TeX-3.14159 ( web2c-7.0 ). 
+
+[10] web2c-7.0-w32lib.tar.gz
+Libraries for TeX-3.14159 including EC and AMS fonts.
+
+[11] latex.tar.gz
+Macros and a format file for LaTeX2e <1997/06/01> patch level 0.
+
+[12] platex.tar.gz
+Macros and a format file for pLaTeX2e <1997/07/02>+2.
+
+[13] vf-a2bk.tar.gz
+Virtual and tfm fonts to be used with dvipsk-w32.tar.gz.
+
+[14] txtutil.tar.gz
+Utilities to convert format of text files ( todos, tomac and tounix ).
+
+[15] texloader.tar.gz
+How to save disk space in the case of Windows 95.
+This is not necessary for Windows NT with NTFS and ln.exe.
+
+[16] pdftex-w32.tar.gz
+PDFTeX version 0.11. with pdftex.fmt and pdflatex.fmt.
+
+[17] tiff2png-w32.tar.gz
+File converter from TIFF to PNG.
+
+[18] targzip.lzh
+Utilities tar.exe and gzip.exe.
+------------------------------------------
+Akira Kakuto  < kakuto@fuk.kindai.ac.jp >
+------------------------------------------

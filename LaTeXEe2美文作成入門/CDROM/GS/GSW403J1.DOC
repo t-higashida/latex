@@ -1,0 +1,41 @@
+ファイル名：GSW403J1.DOC
+登録者：XNF38135
+登録日：96/11/ 2
+サイズ：0001449
+
+---------------------------------------------------
+Aladdin Ghostscript ver.4.03 for WIN32 with kfvflib
+---------------------------------------------------
+
+
+このアーカイブは Aladdin Ghostscript Ver.4.03 for WIN 95/NT (gswin32)
+を，TrueType や書体倶楽部形式等の日本語フォントを利用できるように
+拡張するための，ソース差分およびバイナリ差分をまとめたものです．
+オリジナルの gswin32 に対して，片山紀生氏の日本語化パッケージ 1.0 
+の一部，角川裕次氏のベクトルフォントライブラリ (VFlib) ver.2.22，
+淺山和典氏の日本語フォントドライバ on VFlib 1.0 (kfvflib) が
+組み込まれています．
+また，kfvflib を gs 4.03 に組み込むための変更部分については
+鈴木大輔氏，田中哲氏等が発表したパッチに基づいています．
+
+
+本アーカイブを用いて gswin32 のインストールを行うにためには，
+以下のファイルを別途用意する必要があります．
+() 内は PC-VAN SIG SCIENCE の OSL に登録されているファイル名です．
+
+gs403w32.zip: Ghostscript 4.03 Win32 版オリジナル実行ファイル
+gs403ini.zip: Ghostscript 4.03 初期化ファイル + ドキュメント
+ghostscript-fonts-std-4.03.tar.gz (gs403fns.tgz)
+: Ghostscript 4.03 standard フォントセット
+ghostscript-fonts-other-4.03.tar.gz (gs403fno.tgz)
+: Ghostscript 4.03 other フォントセット
+
+詳しくは，readme.txt をご覧ください．
+
+※本アーカイブはディレクトリ付で解凍して下さい．
+lha x gsw403j1.lzh
+
+
+                                    松田 一朗
+                         PC-VAN   : XNF38135@pcvan.or.jp
+                         Nifty    : JAC01307@niftyserve.or.jp

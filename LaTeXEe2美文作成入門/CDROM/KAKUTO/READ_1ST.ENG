@@ -1,0 +1,123 @@
+                      pTeX 2.1.5 for Win 32 (x86)
+                                (Beta-12)
+
+                              README.1st
+
+This directory contains binaries and libraries of pTeX 2.1.5 for
+Win32 (x86).  The pTeX 2.1.5 is a TeX environment developed by
+ASCII Co. based on TeX 3.14159 ( Web2c-7.0). The pTeX 2.1.5 consists
+of Japanese plain publishing TeX ( pTeX ) and Japanese publishing
+LaTeX2e ( pLaTeX2e ), as well as the original TeX and LaTeX2e.
+Binaries in this directory are ones compiled by Microsoft VC++ 5.0.
+For Japanese characters, Shift-JIS code is adopted. Note that long
+file names are fully supported.
+
+Main files are
+
+(A) web2c-7.0-w32bin.tar.gz
+(B) web2c-7.0-w32lib.tar.gz
+(C) ptex-2.1.5-w32bin.tar.gz
+(D) ptex-2.1.5-w32lib.tar.gz
+(E) latex.tar.gz
+(F) platex.tar.gz
+
+                              Misc.
+(01) makeindex-w32.tar.gz
+     : makeindex program by ASCII Co. Japanese is OK.
+       this supports kpathsea 3.0.
+
+(02) mendexk-w32.tar.gz
+     : makeindex program mendexk-2.3i that supports kpathsea 3.0.
+       ( by K. Asayama and ASCII Co. )
+
+(03) dvipsk-w32.tar.gz
+     : dvi ---> ps driver   dvipsk-5.66a + ascii-jpatch-p1.3.
+       Japanese is OK and upper compatible with dvipsk-5.66a.
+       "vf-a2bk.tar.gz" in this directory is also necessary to deal with
+       Japanese. Original dvipsk-5.66a is also included.
+
+(04) oldformat.tar.gz
+     : format files for LaTeX 2.09, pLaTeX 2.09 and old plain pTeX.
+       format files for LaTeX2e etc. are in the "ptex-2.1.5-w32lib-a.tar.gz".
+
+(05) oldinputs.tar.gz
+     : input files to be used with oldformat.tar.gz
+
+(06) vf-a2bk.tar.gz
+     : virtual and tfm fonts for dvipsk-w32.tar.gz
+
+(07) txtutil.tar.gz
+     : Programs to change END-OF-LINE character(s) between UNIX, MAC
+       and DOS text files.
+
+(08) texloader.tar.gz
+     : Small programs which can be used as program loaders for TeX.
+       These will be useful for FAT file system because hard link
+       is impossible in FAT.
+
+(09) pdftex-w32.tar.gz
+     : pdftex version 0.11.
+       Expand in the directory c:/usr/local .
+
+(10) tiff2png-w32.tar.gz
+     : File converter from TIFF to PNG. Useful for PDFTeX.
+
+                         How to install
+
+(1) Make a directory /usr/local on a suitable drive ( e.g., c: ).
+    c:
+    md \usr
+    md \usr\local
+
+(2) Expand ptex-2.1.5-w32bin.tar.gz , ptex-2.1.5-w32lib.tar.gz ,
+    web2c-7.0-w32bin.tar.gz , web2c-7.0-w32lib.tar.gz ,
+    latex.tar.gz and platex.tar.gz in the directory c:/usr/local:
+    c:
+    cd \usr\local
+    gzip -cd ptex-2.1.5-w32bin.tar.gz | tar xvf -
+    gzip -cd ptex-2.1.5-w32lib.tar.gz | tar xvf -
+    gzip -cd web2c-7.0-w32bin.tar.gz | tar xvf -
+    gzip -cd web2c-7.0-w32lib.tar.gz | tar xvf -
+    gzip -cd latex.tar.gz | tar xvf -
+    gzip -cd platex.tar.gz | tar xvf -
+
+(3) Edit c:/usr/local/share/texmf/web2c/texmf.cnf for your system.
+
+(4) Set environment variables TEXMFCNF etc. The following is an example.
+    TEXMF=c:/usr/local/share/texmf
+    TEXMFCNF=.;c:/usr/local/share/texmf/web2c
+    TEXEDIT=c:/usr/local/bin/mule +%d %s
+    MFEDIT=c:/usr/local/bin/mule +%d %s
+
+(5) If your filesystem is NTFS and you have ln.exe in the resource kit,
+    make suitable hard links as follows:
+    c:
+    cd \usr\local\bin
+    ln tex.exe latex.exe
+    ln ptex.exe platex.exe
+    If your filesystem is FAT or you do not have ln.exe, use copy
+    command instead of ln :
+    copy tex.exe latex.exe
+    copy ptex.exe platex.exe
+
+(7) Finally check the values of MAKEMPX_BINDIR and PATH in the
+    script makempx.sh which is installed in the bin directory
+    ( default is c:/usr/local/bin ).
+
+    Base files for metafont are not in the package, because they depend
+    on a type of printer. You have to make them and move them into
+    c:/usr/local/share/texmf/web2c. To make base files, use -ini option
+    for mf command :
+    mf -ini mf  , where the contents of the file mf.mf are
+    input plain;
+    input local;
+    dump
+
+    local.mf is a copy of modes.mf .  Parameters for irrelevant printers
+    in local.mf may be commented out.
+
+    There is a sample of mf.base, which supports 118, 160, 180, 240, 300,
+    320, 360, 400 and 600 DPIs, in dvipsk-w32.tar.gz.
+-------------------------------------------
+Akira Kakuto   < kakuto@fuk.kindai.ac.jp >
+-------------------------------------------
